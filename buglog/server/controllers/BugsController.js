@@ -12,7 +12,7 @@ export class BugsController extends BaseController {
 
   async create(req, res, next) {
     try {
-      // do not trust the client
+      // do not trust the client use userInfo
       req.body.creatorId = req.userInfo.id
       const bug = await bugsService.create(req.body)
       res.send(bug)
