@@ -3,7 +3,7 @@
     <div class="row">
       <div class="my-2 col-12 p-3 d-flex justify-content-between">
         <h2 class="mx-2 text-dark">{{bug.title}}</h2>
-        <button v-if="!bug.closed && account.id === bug.creator.id" class="btn btn-primary" data-toggle="modal" data-target="#edit-bug" title="Edit This Bug">Edit Bug</button>
+        <i v-if="!bug.closed && account.id === bug.creator.id" class="far fa-edit fa-3x hoverable" data-toggle="modal" data-target="#edit-bug" title="Edit This Bug"></i>
       </div>
       <div class="col-12">
         <div class="row" >
@@ -28,7 +28,7 @@
                 </div>
               </div>
               <div v-else class="col-6 d-flex align-items-end justify-content-end pt-2">
-                <h2 @click="closeBug" title="Close Bug">🔴</h2>
+                <h2 @click="closeBug" class="hoverable" title="Close Bug">🔴</h2>
                 <div class="d-flex flex-column justify-content-end">
                   <h5 class="text-grey ">Status</h5>
                   <h5 class="">Open</h5>
