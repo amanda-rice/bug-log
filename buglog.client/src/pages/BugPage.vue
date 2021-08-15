@@ -5,7 +5,44 @@
         <h2 class="mx-2 text-dark">{{bug.title}}</h2>
       </div>
       <div class="col-12">
-        <OpenBugCard :bug="bug"/>
+        <div class="row" >
+          <div class="col-12 border-top border-primary pt-3 pb-2 px-5">
+            <div class="row text-left justify-content-between">
+              <div class="col-md-4 d-flex align-items-end">
+                <img :src="bug.creator.picture" :alt="bug.creator.name">
+                <div class="pl-2 text-break">
+                  <h5 class="text-grey">Reported By</h5>
+                  <h5 class="">{{bug.creator.name}}</h5>
+                </div>
+              </div>
+              <div class="col-6 col-md-2 d-flex flex-column justify-content-end align-items-start pt-2">
+                <h5 class="text-grey">Last Updated</h5>
+                <h5><i>{{createdDate}}</i></h5>
+              </div>
+              <div v-if="bug.closed" class="col-6 d-flex align-items-end pt-2">
+                <h2>🟢</h2>
+                <div class="text-right">
+                  <h5 class="text-grey">Status</h5>
+                  <h5>Closed</h5>
+                </div>
+              </div>
+              <div v-else class="col-6 d-flex align-items-end justify-content-end pt-2">
+                <h2>🔴</h2>
+                <div class="d-flex flex-column justify-content-end">
+                  <h5 class="text-grey ">Status</h5>
+                  <h5 class="">Open</h5>
+                </div>
+              </div>
+              <div class="col-12 py-4"> 
+                <p>{{bug.description}}</p> 
+              </div>
+              <div class="col-12">
+                <textarea name="message" rows="10" cols="125">
+                  </textarea>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-12">
          <NoteThread :notes="notes"/>
@@ -45,7 +82,7 @@ export default {
     })
     return {
       state,
-      bug: computed(() => AppState.thisBug),
+      bug: computed(() => AppState.bugs.find(b => b.id === state.bugId)),
       notes: computed(()=> AppState.notes)
     }
   }

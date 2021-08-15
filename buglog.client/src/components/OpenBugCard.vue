@@ -1,5 +1,6 @@
 <template>
   <div class="row" >
+    {{bug}}
     <div class="col-12 border-top border-primary pt-3 pb-2 px-5">
       <div class="row text-left justify-content-between">
         <div class="col-md-4 d-flex align-items-end">
@@ -46,16 +47,17 @@ import Pop from '../utils/Notifier'
 import { bugsService } from '../services/BugsService'
 
 export default {
-  props: {
-    bug: {
-      type: Object,
-      required: true
-    }
-  },
-  setup(props) {
+  // props: {
+  //   bug: {
+  //     type: Object,
+  //     required: true
+  //   }
+  // },
+  setup() {
     return {
       account: computed(() => AppState.account),
-       createdDate: computed(() => {
+      bug: computed(() => AppState.thisBug),
+      createdDate: computed(() => {
         const updated = new Date(props.bug.createdAt)
         return new Intl.DateTimeFormat('en-US').format(updated)
        }),

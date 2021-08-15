@@ -61,10 +61,12 @@ import Pop from '../utils/Notifier'
 import { bugsService } from '../services/BugsService'
 import { reactive, computed } from 'vue'
 import { AppState } from '../AppState'
+import { useRouter } from 'vue-router'
 
 export default {
   name: 'Component',
   setup() {
+    const router = useRouter()
     const state = reactive({
       createBug: {}
     })
@@ -73,9 +75,10 @@ export default {
       state,
       async createBug() {
         try {
-          await bugsService.createBug(state.createBug)
+          const id = await bugsService.createBug(state.createBug)
           state.createBug = {}
           $('#create-bug').modal('hide')
+          router.push({ name: 'BugPage', params: { bugId: id } })
           Pop.toast('Created Project Successfully', 'success')
         } catch (error) {
           Pop.toast(error, 'error')
