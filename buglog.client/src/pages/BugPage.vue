@@ -27,7 +27,7 @@
                 </div>
               </div>
               <div v-else class="col-6 d-flex align-items-end justify-content-end pt-2">
-                <h2>🔴</h2>
+                <h2 @click="closeBug" title="Close Bug">🔴</h2>
                 <div class="d-flex flex-column justify-content-end">
                   <h5 class="text-grey ">Status</h5>
                   <h5 class="">Open</h5>
@@ -107,6 +107,15 @@ export default {
           await notesService.createNote(state.createNote)
           state.createNote = {bugId : state.bugId}
           Pop.toast('Created Note Successfully', 'success')
+        } catch (error) {
+          Pop.toast(error, 'error')
+        }
+      },
+      async closeBug(){
+        try {
+          if(await Pop.confirm())
+          await bugsService.closeBug(state.bugId)
+          Pop.toast('Closed Bug Successfully', 'success')
         } catch (error) {
           Pop.toast(error, 'error')
         }

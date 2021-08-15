@@ -31,7 +31,7 @@ class NotesService {
     if (note.closed) {
       throw new Forbidden('Already Closed')
     }
-    const afterUpdate = await dbContext.Notes.findByIdAndUpdate(updatedId, updated, { new: true })
+    const afterUpdate = await dbContext.Notes.findByIdAndUpdate(updatedId, updated, { new: true }).populate('creator', 'name picture')
     return afterUpdate
   }
 

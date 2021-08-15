@@ -20,7 +20,7 @@
           <p>🟢</p>
         </div>
         <div v-else>
-          <p @click="closeBug" title="Close Bug">🔴</p>
+          <p>🔴</p>
         </div>
       </div>
     </div>

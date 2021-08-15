@@ -31,7 +31,7 @@ class BugsService {
     if (bug.closed) {
       throw new Forbidden('Already Closed')
     }
-    const afterUpdate = await dbContext.Bugs.findByIdAndUpdate(updatedId, updated, { new: true })
+    const afterUpdate = await dbContext.Bugs.findByIdAndUpdate(updatedId, updated, { new: true }).populate('creator', 'name picture')
     return afterUpdate
   }
 
@@ -50,7 +50,7 @@ class BugsService {
     const day = date.getDate()
     const month = date.getMonth() + 1
     const year = date.getFullYear()
-    return await dbContext.Bugs.findByIdAndUpdate(id, { closed: true, closedDate: `${month}/${day}/${year}` }, { new: true })
+    return await dbContext.Bugs.findByIdAndUpdate(id, { closed: true, closedDate: `${month}/${day}/${year}` }, { new: true }).populate('creator', 'name picture')
   }
 }
 export const bugsService = new BugsService()

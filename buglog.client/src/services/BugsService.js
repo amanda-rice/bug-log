@@ -18,6 +18,14 @@ class BugsService {
     AppState.bugs.push(res.data)
     return res.data.id
   }
+
+  async closeBug(id) {
+    const res = await api.delete(`api/bugs/${id}`)
+    const index = AppState.bugs.findIndex(b => b.id === id)
+    AppState.bugs.splice(index, 1)
+    AppState.bugs.push(res.data)
+    return res.data.id
+  }
 }
 
 export const bugsService = new BugsService()
