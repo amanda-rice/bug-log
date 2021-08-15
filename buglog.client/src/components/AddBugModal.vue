@@ -61,7 +61,7 @@ import Pop from '../utils/Notifier'
 import { bugsService } from '../services/BugsService'
 import { reactive, computed } from 'vue'
 import { AppState } from '../AppState'
-import { useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 
 export default {
   name: 'Component',
