@@ -3,7 +3,9 @@
     <div class="row">
       <div class="col-md-3 py-1">
         <h5 class="mobile-on"><b>Title:</b></h5>
-        <p>{{bug.title}}</p>
+        <router-link :to="{name: 'BugPage', params: {bugId: bug.id}}">
+          <p class="text-dark">{{bug.title}}</p>
+        </router-link>
       </div>
       <div class="col-md-3 py-1">
         <h5 class="mobile-on"><b>Reported By:</b></h5>
@@ -15,10 +17,10 @@
       </div>
       <div class="col-md-3 py-1">
         <div v-if="bug.closed">
-          🟢
+          <p>🟢</p>
         </div>
         <div v-else>
-          🔴
+          <p @click="closeBug" title="Close Bug">🔴</p>
         </div>
       </div>
     </div>
@@ -50,6 +52,16 @@ export default {
         try {
           if (await Pop.confirm()) {
             await bugsService.destroy(props.bug.id)
+            Pop.toast('Deleted Project Successfully', 'success')
+          }
+        } catch (error) {
+          Pop.toast(error, 'error')
+        }
+      },
+      async closeBug() {
+        try {
+          if (await Pop.confirm(title = 'Are you sure you want to close this bug?', text = "You won't be able to revert this!", icon = 'warning', confirmButtonText = 'Yes, close it!')) {
+            await bugsService.closeBug(props.bug.id)
             Pop.toast('Deleted Project Successfully', 'success')
           }
         } catch (error) {

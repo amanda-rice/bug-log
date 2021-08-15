@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-content-between py-1 ">
-    <BugCard v-for="b in bugs" :key="b.id" :bug="b" />
+    <NoteCard v-for="b in notes" :key="b.id" :note="b" />
   </div>
 </template>
 
@@ -8,9 +8,9 @@
 import { computed } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 export default {
-  name: 'BugThread',
+  name: 'NoteThread',
   props: {
-    bugs: {
+    notes: {
       type: Array,
       required: true
     }
