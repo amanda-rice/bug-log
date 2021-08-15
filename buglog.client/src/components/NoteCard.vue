@@ -1,13 +1,12 @@
 <template>
-  <div class="row text-left justify-content-between">
     <div class="col-12 d-flex flex-column pt-3 pb-2 px-5 border-top border-primary">
       <div class="justify-content-start align-items-center d-flex">
         <img :src="note.creator.picture" :alt="note.creator.name">
         <p class="pl-2"><i>{{note.creator.name}}</i></p>
+        <button class="btn btn-primary" @click="destroy">Delete</button>
       </div>
       <p class="py-2">{{note.body}}</p>
     </div>
-  </div>
 </template>
 
 

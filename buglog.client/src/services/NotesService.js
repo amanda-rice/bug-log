@@ -11,9 +11,14 @@ class NotesService {
 
   async createNote(obj) {
     const res = await api.post('api/notes', obj)
-    logger.log(res)
+    logger.log(res, 'create note')
     AppState.notes.push(res.data)
     logger.log(AppState.notes)
+  }
+
+  async destroy(id) {
+    const res = await api.delete(`api/notes/${id}`)
+    AppState.notes = AppState.notes.filter(note => note.id !== id)
   }
 }
 

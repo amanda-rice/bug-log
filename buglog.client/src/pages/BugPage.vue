@@ -37,8 +37,23 @@
                 <p>{{bug.description}}</p> 
               </div>
               <div class="col-12">
-                <textarea name="message" rows="10" cols="125">
-                  </textarea>
+              <form @submit.prevent="create">
+                <div class="form-group">
+                  <label class="pr-2" for="note-body">Add Note</label>
+                  <textarea
+                        id="note-body"
+                        class="form-control"
+                        placeholder="New note..."
+                        maxlength="1000"
+                        v-model="state.createNote.body"
+                  ></textarea>
+                </div>
+                <div>
+                  <button v-if="state.createNote.body" type="submit" class="btn btn-primary mr-3">
+                    Save Note
+                  </button>
+                </div>
+              </form>
               </div>
             </div>
           </div>
@@ -64,7 +79,10 @@ export default {
   setup() {
     const route = useRoute()
     const state = reactive({
-      bugId: route.params.bugId
+      bugId: route.params.bugId,
+      createNote: {
+        bugId : route.params.bugId
+      }
     })
     onMounted(async() => {
       try {
@@ -83,7 +101,16 @@ export default {
     return {
       state,
       bug: computed(() => AppState.bugs.find(b => b.id === state.bugId)),
-      notes: computed(()=> AppState.notes)
+      notes: computed(()=> AppState.notes),
+      async create() {
+        try {
+          await notesService.createNote(state.createNote)
+          state.createNote = {bugId : state.bugId}
+          Pop.toast('Created Note Successfully', 'success')
+        } catch (error) {
+          Pop.toast(error, 'error')
+        }
+      }
     }
   }
 }
@@ -98,4 +125,8 @@ export default {
     width: 200px;
   }
 }
+textarea {
+        width: 90vw;
+        height: 10vh;
+      }
 </style>
