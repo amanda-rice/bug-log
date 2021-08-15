@@ -18,8 +18,12 @@
           <h4 @click="filterOpen"><b>Sort</b></h4>
         </div>
       <div class="col-12">
-        <BugThread v-if="state.isOpen" :bugs="bugs.filter(b=> !b.closed)"/>
-        <BugThread v-else :bugs="bugs"/>
+        <div v-if="state.isOpen">
+          <BugThread :bugs="bugs.filter(b=> !b.closed)"/>
+        </div>
+          <div v-else>
+            <BugThread  :bugs="bugs"/>
+          </div>
       </div>
     </div>
   </div>
