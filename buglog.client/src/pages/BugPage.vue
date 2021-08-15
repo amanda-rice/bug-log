@@ -3,6 +3,7 @@
     <div class="row">
       <div class="my-2 col-12 p-3 d-flex justify-content-between">
         <h2 class="mx-2 text-dark">{{bug.title}}</h2>
+        <button v-if="!bug.closed && account.id === bug.creator.id" class="btn btn-primary" data-toggle="modal" data-target="#edit-bug" title="Edit This Bug">Edit Bug</button>
       </div>
       <div class="col-12">
         <div class="row" >
@@ -19,7 +20,7 @@
                 <h5 class="text-grey">Last Updated</h5>
                 <h5><i>{{createdDate}}</i></h5>
               </div>
-              <div v-if="bug.closed" class="col-6 d-flex align-items-end pt-2">
+              <div v-if="bug.closed" class="col-6 d-flex align-items-end justify-content-end pt-2">
                 <h2>🟢</h2>
                 <div class="text-right">
                   <h5 class="text-grey">Status</h5>
@@ -36,7 +37,7 @@
               <div class="col-12 py-4"> 
                 <p>{{bug.description}}</p> 
               </div>
-              <div class="col-12">
+              <div v-if="account.name" class="col-12">
               <form @submit.prevent="create">
                 <div class="form-group">
                   <label class="pr-2" for="note-body">Add Note</label>
@@ -64,6 +65,7 @@
       </div>
     </div>
   </div>
+  <EditBugModal/>
   <AddBugModal/>
 </template>
 
@@ -101,7 +103,17 @@ export default {
     return {
       state,
       bug: computed(() => AppState.bugs.find(b => b.id === state.bugId)),
+      account: computed(() => AppState.account),
+      thisBug: computed(()=> AppState.thisBug),
       notes: computed(()=> AppState.notes),
+      createdDate: computed(() => {
+        // NOTE why doesn't this.bug work? Also, isn't updating
+        let theBug = AppState.bugs.find(b => b.id === state.bugId)
+        let date = theBug.updatedAt
+        console.log(date, 'thebug')
+        const updated = new Date(date)
+        return new Intl.DateTimeFormat('en-US').format(updated)
+       }),
       async create() {
         try {
           await notesService.createNote(state.createNote)
