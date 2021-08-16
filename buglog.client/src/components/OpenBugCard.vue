@@ -1,17 +1,17 @@
 <template>
   <div class="row" >
     {{bug}}
-    <div class="col-12 border-top border-primary pt-3 pb-2 px-5">
+    <div class="col-12 pt-3 pb-2 px-5">
       <div class="row text-left justify-content-between">
         <div class="col-md-4 d-flex align-items-end">
           <img :src="bug.creator.picture" :alt="bug.creator.name">
           <div class="pl-2 text-break">
             <h5 class="text-grey">Reported By</h5>
-            <h5 class="">{{bug.creator.name}}</h5>
+            <h5 class="text-break text-wrap">{{bug.creator.name}}</h5>
           </div>
         </div>
         <div class="col-6 col-md-2 d-flex flex-column justify-content-end align-items-start pt-2">
-          <h5 class="text-grey">Last Updated</h5>
+          <h5 class="text-grey text-break text-wrap">Last Updated</h5>
           <h5><i>{{createdDate}}</i></h5>
         </div>
         <div v-if="bug.closed" class="col-6 d-flex align-items-end pt-2">
@@ -28,7 +28,7 @@
             <h5 class="">Open</h5>
           </div>
         </div>
-        <div class="col-12 py-4"> 
+        <div class="col-12 py-4 text-break text-wrap"> 
           <p>{{bug.description}}</p> 
         </div>
         <div class="col-12">

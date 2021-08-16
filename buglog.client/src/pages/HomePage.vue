@@ -1,21 +1,40 @@
 <template>
   <div class="home container-fluid flex-grow-1 d-flex flex-column">
     <div class="row">
-      <div class="my-2 col-12 p-3 d-flex justify-content-between">
-        <h2 class="mx-2">Bugs</h2>
-        <button v-if="account.name" class="btn btn-primary" data-toggle="modal" data-target="#create-bug" title="Create New Bug">Add Bug</button>
+      <div class="my-2 col-12 p-3">
+        <div class="row justify-content-between">
+          <div class="col-md-3 pb-2">
+            <h2 class="text-left">Bugs</h2>
+          </div>
+          <div class="col-6 col-md-2">
+            <button class="mobile-on btn btn-outline-dark" 
+            @click="filterOpen"
+            :title="`Filter to ${state.isOpen?'View All':'View Open Bugs'}`" 
+            :aria-label="`Filter to ${state.isOpen?'View All':'View Open Bugs'}`">
+            {{state.isOpen?'View All':'View Open Bugs'}}
+          </button>
+        </div>
+        <div class="col-6 col-md-2">
+          <button v-if="account.name" class="btn btn-outline-dark .ml-auto" data-toggle="modal" data-target="#create-bug" title="Create New Bug">Add Bug</button>
+        </div>
       </div>
-        <div class="mobile-off col-md-3 border-bottom pb-2">
-          <h4><b>Title</b></h4>
+      </div>
+        <div class="mobile-off col-md-3 pb-2">
+          <h3><b>Title</b></h3>
         </div>
-        <div class="mobile-off col-md-3 border-bottom pb-2">
-          <h4><b>Reported By</b></h4>
+        <div class="mobile-off col-md-3 pb-2">
+          <h3><b>Reported By</b></h3>
         </div>
-        <div class="mobile-off col-md-3 border-bottom pb-2">
-          <h4><b>Last Updated</b></h4>
+        <div class="mobile-off col-md-3 pb-2">
+          <h3><b>Last Updated</b></h3>
         </div>
-        <div class="mobile-off col-md-3 border-bottom pb-2">
-          <h4 @click="filterOpen"><b>Sort</b></h4>
+        <div class="mobile-off col-md-3 pb-2">
+          <h3 @click="filterOpen" 
+              class="hoverable"  
+              :title="`Filter to ${state.isOpen?'View All':'View Open Bugs'}`" 
+              :aria-label="`Filter to ${state.isOpen?'View All':'View Open Bugs'}`">
+              <b>{{state.isOpen?'View All':'View Open Bugs'}}</b>
+          </h3>
         </div>
       <div class="col-12">
         <div v-if="state.isOpen">

@@ -1,11 +1,20 @@
 <template>
-    <div class="col-12 d-flex flex-column pt-3 pb-2 px-5 border-top border-primary">
-      <div class="justify-content-start align-items-center d-flex">
-        <img :src="note.creator.picture" :alt="note.creator.name">
-        <p class="pl-2"><i>{{note.creator.name}}</i></p>
-        <button v-if="account.name === note.creator.name" class="btn btn-primary" @click="destroy">Delete</button>
+    <div class="col-11 d-flex flex-column pt-2 pb-1 px-5 my-2 bg-light">
+      <div class="justify-content-between d-flex">
+        <div class="d-flex align-items-end">
+          <img class="image-circle text-break text-wrap" :src="note.creator.picture" :alt="note.creator.name">
+          <p class="pl-2 text-break text-wrap"><i>{{note.creator.name}}</i></p>
+        </div>
+        <div>
+          <i v-if="account.name === note.creator.name" 
+          class="fa fa-trash fa-lg hoverable" 
+          @click="destroy"
+          title="Delete Note"
+          aria-label="Delete Note"
+          ></i>
+        </div>
       </div>
-      <p class="py-2">{{note.body}}</p>
+      <p class="pt-4 pb-2 text-left text-break text-wrap">{{note.body}}</p>
     </div>
 </template>
 
@@ -47,5 +56,8 @@ export default {
 
 
 <style lang="scss" scoped>
-
+img{
+  height: 50px;
+  width:50px;
+}
 </style>

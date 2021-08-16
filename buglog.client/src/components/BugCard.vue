@@ -1,9 +1,11 @@
 <template>
-  <div class="col-12 border-top border-primary pt-3 pb-2">
+  <div class="col-12 border-bottom bg-light mt-1 pt-2 pb-1">
     <div class="row">
       <div class="col-md-3 py-1">
         <h5 class="mobile-on"><b>Title:</b></h5>
-        <router-link :to="{name: 'BugPage', params: {bugId: bug.id}}">
+        <router-link :to="{name: 'BugPage', params: {bugId: bug.id}}"
+            :title="`Go to ${bug.title} details page`" 
+            :aria-label="`Go to ${bug.title} details page`">
           <p class="text-dark">{{bug.title}}</p>
         </router-link>
       </div>
@@ -17,10 +19,10 @@
       </div>
       <div class="col-md-3 py-1">
         <div v-if="bug.closed">
-          <p>🟢</p>
+          <p title="Bug is closed">🟢</p>
         </div>
         <div v-else>
-          <p>🔴</p>
+          <p title="Bug is open">🔴</p>
         </div>
       </div>
     </div>

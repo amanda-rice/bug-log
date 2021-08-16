@@ -3,7 +3,10 @@
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex align-items-center">
         <i class="fas fa-bug fa-2x"></i>
-        <h1 class="pl-2">Buglog</h1>
+        <h1 class="pl-2"
+            title="Go Home" 
+            aria-label="Go Home"
+        >Buglog</h1>
       </div>
     </router-link>
     <button
@@ -14,25 +17,21 @@
       aria-controls="navbarText"
       aria-expanded="false"
       aria-label="Toggle navigation"
+      title="Go Home"
     >
       <span class="navbar-toggler-icon" />
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link :to="{ name: 'Home' }" class="nav-link">
+          <router-link :to="{ name: 'Home' }" class="nav-link text-grey">
             Home
-          </router-link>
-        </li>
-        <li class="nav-item">
-          <router-link :to="{ name: 'About' }" class="nav-link">
-            About
           </router-link>
         </li>
       </ul>
       <span class="navbar-text">
         <button
-          class="btn btn-outline-primary text-uppercase"
+          class="btn btn-outline-dark text-uppercase"
           @click="login"
           v-if="!user.isAuthenticated"
         >
@@ -53,15 +52,12 @@
             <span class="mx-3">{{ user.name }}</span>
           </div>
           <div
-            class="dropdown-menu p-0 list-group w-100"
+            class="dropdown-menu p-0 list-group w-100 hoverable"
             :class="{ show: state.dropOpen }"
+            title="Login/Logout"
+            aria-label="Login/Logout"
             @click="state.dropOpen = false"
           >
-            <router-link :to="{ name: 'Account' }">
-              <div class="list-group-item list-group-item-action hoverable">
-                Account
-              </div>
-            </router-link>
             <div
               class="list-group-item list-group-item-action hoverable"
               @click="logout"
