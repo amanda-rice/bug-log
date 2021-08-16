@@ -6,7 +6,7 @@
           <p class="pl-2 text-break text-wrap"><i>{{note.creator.name}}</i></p>
         </div>
         <div>
-          <i v-if="account.name === note.creator.name" 
+          <i v-if="bug && account.name === note.creator.name && !bug.closed" 
           class="fa fa-trash fa-lg hoverable" 
           @click="destroy"
           title="Delete Note"
@@ -20,10 +20,12 @@
 
 
 <script>
-import { computed } from '@vue/runtime-core'
+import { computed, onMounted, reactive} from '@vue/runtime-core'
+import { useRoute } from 'vue-router'
 import { AppState } from '../AppState'
 import Pop from '../utils/Notifier'
 import { notesService } from '../services/NotesService'
+import {bugsService} from '../services/BugsService'
 
 export default {
   props: {
@@ -33,8 +35,23 @@ export default {
     }
   },
   setup(props) {
+    const route = useRoute()
+    const state = reactive({
+      bugId: route.params.bugId,
+      createNote: {
+        bugId : route.params.bugId
+      }
+    })
+    onMounted(async() => {
+      try {
+        await bugsService.getBugById(route.params.bugId)
+      } catch (error) {
+        Pop.toast(error, 'error')
+      }
+    })
     return {
       account: computed(() => AppState.account),
+      bug: computed(()=> AppState.thisBug),
        createdDate: computed(() => {
         const updated = new Date(props.note.createdAt)
         return new Intl.DateTimeFormat('en-US').format(updated)

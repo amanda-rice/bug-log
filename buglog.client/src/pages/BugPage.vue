@@ -3,11 +3,11 @@
     <div class="row">
       <div class="col-12 d-flex justify-content-between">
         <h1 class="text-left text-break">{{bug.title}}</h1>
-        <div v-if="account && account.id && bug">
+        <div v-if="account && account.id && bug.creator">
           <button class="btn btn-outline-dark mobile-off" v-if="account && account.id === bug.creator.id && !bug.closed" data-toggle="modal" data-target="#edit-bug" title="Edit This Bug">edit</button>
         </div>
         </div>
-      <div class="col-12 mobile-on" v-if="account && account.id && bug">
+      <div class="col-12 mobile-on" v-if="account && account.id && bug.creator">
         <button class="btn btn-outline-dark" v-if="account && account.id === bug.creator.id && !bug.closed" data-toggle="modal" data-target="#edit-bug" title="Edit This Bug">edit</button>
       </div>
       <div class="col-12" >
@@ -53,7 +53,7 @@
               <div class="col-12 py-4"> 
                 <p>{{bug.description}}</p> 
               </div>
-              <div v-if="account.name" class="col-12 d-flex justify-content-center">
+              <div v-if="account.name && !bug.closed" class="col-12 d-flex justify-content-center">
               <form @submit.prevent="create">
                 <div class="form-group">
                   <label class="" for="note-body">Add Note</label>
