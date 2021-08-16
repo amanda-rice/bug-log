@@ -16,11 +16,15 @@
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
+header{
+   font-family: 'Bitter', serif;
+}
 
 main {
   flex-grow: 1;
   display: flex;
   align-items: stretch;
+  font-family: 'Bitter', serif;
 }
 @media only screen and (min-width: 768px) {
   .mobile-on{

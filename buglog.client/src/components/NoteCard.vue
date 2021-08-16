@@ -1,5 +1,5 @@
 <template>
-    <div class="col-11 d-flex flex-column pt-2 pb-1 px-5 my-2 bg-light">
+    <div class="col-11 d-flex flex-column pt-2 pb-1 px-5 my-2 bg-light rounded-lg">
       <div class="justify-content-between d-flex">
         <div class="d-flex align-items-end">
           <img class="image-circle text-break text-wrap" :src="note.creator.picture" :alt="note.creator.name">

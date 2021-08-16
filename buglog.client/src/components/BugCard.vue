@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 border-bottom bg-light mt-1 pt-2 pb-1">
+  <div class="col-12 bg-light mt-1 pt-2 pb-1 rounded-lg">
     <div class="row">
       <div class="col-md-3 py-1">
         <h5 class="mobile-on"><b>Title:</b></h5>

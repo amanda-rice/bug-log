@@ -14,7 +14,7 @@
         <div class="row" >
           <div class="col-12 pt-3 pb-2 px-5">
             <div class="row text-left justify-content-between">
-              <div class="col-md-4 d-flex align-items-end">
+              <div class="col-md-6 col-lg-4 d-flex align-items-end">
                 <img class="image-circle mr-2 creator-image" :src="bug.creator.picture" :alt="bug.creator.name">
                 <div class="pl-2 text-break">
                   <h5 class="text-grey">Reported By</h5>
