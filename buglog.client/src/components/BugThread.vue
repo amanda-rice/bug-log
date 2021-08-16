@@ -1,5 +1,5 @@
 <template>
-  <div class="row justify-content-between py-1 ">
+  <div class="row justify-content-center py-1 ">
     <BugCard v-for="b in bugs" :key="b.id" :bug="b" />
   </div>
 </template>
@@ -19,8 +19,4 @@ export default {
 </script>
 
 <style>
-.comp-thread{
-  background-color: lavender;
-  box-shadow: 1px 1px 15px darkslategray;
-}
 </style>

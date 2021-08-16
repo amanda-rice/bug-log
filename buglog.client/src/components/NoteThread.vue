@@ -19,8 +19,4 @@ export default {
 </script>
 
 <style>
-.comp-thread{
-  background-color: lavender;
-  box-shadow: 1px 1px 15px darkslategray;
-}
 </style>
