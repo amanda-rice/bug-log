@@ -16,6 +16,7 @@ class BugsService {
   async getBugById(id) {
     const res = await api.get(`api/bugs/${id}`)
     AppState.thisBug = res.data
+    console.log(AppState.thisBug, 'this bug')
   }
 
   async createBug(obj) {
