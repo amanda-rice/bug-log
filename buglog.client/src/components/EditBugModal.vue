@@ -25,6 +25,7 @@
                      class="form-control"
                      placeholder="Bug title..."
                      maxlength="50"
+                     required
                      v-model="state.editBug.title"
               >
             </div>
@@ -35,11 +36,12 @@
                      class="form-control"
                      placeholder="Description..."
                      maxlength="500"
+                     required
                      v-model="state.editBug.description"
               >
             </div>
             <div>
-              <button v-if="state.editBug" type="submit" class="btn btn-primary mr-3">
+              <button v-if="state.editBug.description || state.editBug.title" type="submit" class="btn btn-primary mr-3">
                 Save
               </button>
               <button type="button" class="btn btn-secondary closeModal" data-dismiss="modal">

@@ -25,6 +25,7 @@
                      class="form-control"
                      placeholder="Bug title..."
                      maxlength="50"
+                     required
                      v-model="state.createBug.title"
               >
             </div>
@@ -35,6 +36,7 @@
                      class="form-control"
                      placeholder="Description..."
                      maxlength="500"
+                     required
                      v-model="state.createBug.description"
               >
             </div>

@@ -1,7 +1,14 @@
 <template>
   <div class="home container-fluid flex-grow-1 d-flex flex-column" v-if="bug">
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 d-flex justify-content-between" v-if="account && account.id && bug">
+        <h1 class="text-left text-break">{{bug.title}}</h1>
+        <button class="btn btn-outline-dark mobile-off" v-if="account && account.id === bug.creator.id && !bug.closed" data-toggle="modal" data-target="#edit-bug" title="Edit This Bug">edit</button>
+      </div>
+      <div class="col-12 mobile-on" v-if="account && account.id && bug">
+        <button class="btn btn-outline-dark" v-if="account && account.id === bug.creator.id && !bug.closed" data-toggle="modal" data-target="#edit-bug" title="Edit This Bug">edit</button>
+      </div>
+      <div class="col-12" >
         <div class="row" >
           <div class="col-12 pt-3 pb-2 px-5">
             <div class="row text-left justify-content-between" v-if='bug.creator'>
@@ -131,9 +138,10 @@ export default {
       },
       async closeBug(){
         try {
-          if(await Pop.confirm())
+          if(await Pop.confirm()){
           await bugsService.closeBug(state.bugId)
           Pop.toast('Closed Bug Successfully', 'success')
+          }
         } catch (error) {
           Pop.toast(error, 'error')
         }

@@ -43,7 +43,7 @@ export default {
         try {
           if (await Pop.confirm()) {
             await notesService.destroy(props.note.id)
-            Pop.toast('Deleted Project Successfully', 'success')
+            Pop.toast('Deleted Note Successfully', 'success')
           }
         } catch (error) {
           Pop.toast(error, 'error')

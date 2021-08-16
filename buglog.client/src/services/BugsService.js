@@ -40,6 +40,7 @@ class BugsService {
     const index = AppState.bugs.findIndex(b => b.id === id)
     AppState.bugs.splice(index, 1)
     AppState.bugs.push(res.data)
+    AppState.thisBug = res.data
     return res.data.id
   }
 }
