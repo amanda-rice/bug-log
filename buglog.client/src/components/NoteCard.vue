@@ -1,5 +1,5 @@
 <template>
-    <div class="col-11 d-flex flex-column pt-2 pb-1 px-5 my-2 bg-light border-primary rounded-lg">
+    <div class="col-11 d-flex flex-column pt-4 pb-1 px-5 my-2 bg-light shadow border-primary rounded-lg">
       <div class="justify-content-between d-flex">
         <div class="d-flex align-items-end">
           <img class="image-circle text-break text-wrap" :src="note.creator.picture" :alt="note.creator.name">
@@ -7,7 +7,7 @@
         </div>
         <div>
           <i v-if="bug && account.name === note.creator.name && !bug.closed" 
-          class="fa fa-trash fa-lg hoverable" 
+          class="fa fa-trash fa-lg hoverable pt-2" 
           @click="destroy"
           title="Delete Note"
           aria-label="Delete Note"

@@ -1,7 +1,7 @@
 <template>
   <div class="home container-fluid flex-grow-1 d-flex flex-column" v-if="bug">
     <div class="row">
-      <div class="col-12 d-flex justify-content-between">
+      <div class="col-12 pt-2 d-flex justify-content-between">
         <h1 class="text-left text-break">{{bug.title}}</h1>
         <div v-if="account && account.id && bug.creator">
           <button class="btn btn-outline-dark mobile-off" v-if="account && account.id === bug.creator.id && !bug.closed" data-toggle="modal" data-target="#edit-bug" title="Edit This Bug">edit</button>
@@ -27,6 +27,7 @@
               </div>
               <div v-if="bug.closed" class="col-6 col-md-2 d-flex align-items-end justify-content-end pt-2 .ml-md-auto">
                 <h2
+                    class="px-2"
                     :title="`${bug.title} is closed`"
                     :aria-label="`${bug.title} is closed`">
                 🟢</h2>
@@ -36,13 +37,15 @@
                 </div>
               </div>
               <div v-else class="col-6 col-md-2 d-flex align-items-end justify-content-end pt-2 .ml-md-auto">
-                <h2 @click="closeBug" 
-                    v-if="account.name === bug.creator.name"
-                    class="hoverable" 
+                <div class="d-flex" v-if="account.name === bug.creator.name">
+                  <button @click="closeBug" 
+                  class="btn btn-outline-dark"
                     :title="`Close ${bug.title}`"
-                    :aria-label="`Close ${bug.title}`">🔴</h2>
+                    :aria-label="`Close ${bug.title}`">Close Bug</button>
+                    <h2 class="px-2">🔴</h2>
+                  </div>
                 <h2 v-else
-                    class="" 
+                    class="px-2" 
                     :title="`${bug.title} is open`"
                     :aria-label="`${bug.title} is open`">🔴</h2>
                 <div class="d-flex flex-column justify-content-end">
@@ -72,7 +75,7 @@
                   <button v-if="state.createNote.body" 
                         type="submit" 
                         id="create-note-button"
-                        class="btn btn-primary mr-3"
+                        class="btn btn-outline-dark mr-3"
                         title="Submit note"
                         aria-label="Submit note">
                     Save Note

@@ -3,7 +3,7 @@
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex align-items-center">
         <i class="fas fa-bug fa-2x"></i>
-        <h1 class="pl-2"
+        <h1 class="pl-2 text-break text-wrap"
             title="Go Home" 
             aria-label="Go Home"
         >Buglog</h1>

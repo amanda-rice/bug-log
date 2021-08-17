@@ -21,7 +21,7 @@
             <div class="form-group">
               <label class="pr-2" for="bug-title">Bug Title</label>
               <input type="text"
-                     id="bug-title"
+                     id="`bug-title-add"
                      class="form-control"
                      placeholder="Bug title..."
                      maxlength="50"
@@ -32,7 +32,7 @@
             <div class="form-group">
               <label class="pr-2" for="bug-description">Description</label>
               <input type="text"
-                     id="bug-description"
+                     id="bug-description-add"
                      class="form-control"
                      placeholder="Description..."
                      maxlength="500"

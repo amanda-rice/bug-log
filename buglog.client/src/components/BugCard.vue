@@ -1,5 +1,5 @@
 <template>
-  <div class="col-11 bg-light mt-1 pt-2 pb-1 rounded-lg">
+  <div class="col-11 bg-light shadow mt-1 pt-2 pb-1 rounded-lg">
     <div class="row">
       <div class="col-md-4 py-1">
         <h5 class="mobile-on"><b>Title:</b></h5>
@@ -18,8 +18,8 @@
       </div>
       </div>
       <div class="col-md-4 py-1">
-        <h5 class="mobile-on"><b>Reported By:</b></h5>
-        <p>{{bug.creator.name}}</p>
+        <h5 class="mobile-on text-break text-wrap"><b>Reported By:</b></h5>
+        <p class="text-break text-wrap">{{bug.creator.name}}</p>
       </div>
       <div class="col-md-4 py-1">
         <h5 class="mobile-on"><b>Last Updated:</b></h5>
