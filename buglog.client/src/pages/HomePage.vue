@@ -28,14 +28,6 @@
         <div class="mobile-off col-md-4 pb-2">
           <h3><b>Last Updated</b></h3>
         </div>
-        <!-- <div class="mobile-off col-md-3 pb-2">
-          <h3 @click="filterOpen" 
-              class="hoverable"  
-              :title="`Filter to ${state.isOpen?'View All':'View Open Bugs'}`" 
-              :aria-label="`Filter to ${state.isOpen?'View All':'View Open Bugs'}`">
-              <b>{{state.isOpen?'View All':'View Open Bugs'}}</b>
-          </h3>
-        </div> -->
       <div class="col-12">
         <div v-if="state.isOpen">
           <BugThread :bugs="bugs.filter(b=> !b.closed)"/>

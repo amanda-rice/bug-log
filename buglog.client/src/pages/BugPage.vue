@@ -4,28 +4,38 @@
       <div class="col-12 pt-2 d-flex justify-content-between">
         <h1 class="text-left text-break">{{bug.title}}</h1>
         <div v-if="account && account.id && bug.creator">
-          <button class="btn btn-outline-dark mobile-off" v-if="account && account.id === bug.creator.id && !bug.closed" data-toggle="modal" data-target="#edit-bug" title="Edit This Bug">edit</button>
+          <button @click="closeBug" 
+              v-if="account && account.id === bug.creator.id && !bug.closed"
+              class="btn btn-outline-dark mr-2 mobile-off"
+              :title="`Close ${bug.title}`"
+              :aria-label="`Close ${bug.title}`">Close Bug</button>
+          <button class="btn btn-outline-dark mobile-off" v-if="account && account.id === bug.creator.id && !bug.closed" data-toggle="modal" data-target="#edit-bug" title="Edit This Bug">Edit</button>
         </div>
         </div>
-      <div class="col-12 mobile-on" v-if="account && account.id && bug.creator">
-        <button class="btn btn-outline-dark" v-if="account && account.id === bug.creator.id && !bug.closed" data-toggle="modal" data-target="#edit-bug" title="Edit This Bug">edit</button>
+        <div class="col-12 d-flex justify-content-start" v-if="account && account.id && bug.creator">
+        <button @click="closeBug" 
+              v-if="account && account.id === bug.creator.id && !bug.closed"
+              class="btn btn-outline-dark mr-2 mobile-on"
+              :title="`Close ${bug.title}`"
+              :aria-label="`Close ${bug.title}`">Close Bug</button>
+        <button class="btn btn-outline-dark mobile-on" v-if="account && account.id === bug.creator.id && !bug.closed" data-toggle="modal" data-target="#edit-bug" title="Edit This Bug">Edit</button>
       </div>
       <div class="col-12" >
         <div class="row" >
-          <div class="col-12 pt-3 pb-2 px-5">
+          <div class="col-12 pt-3 pb-2 padding-l-s">
             <div class="row text-left justify-content-between" v-if='bug.creator'>
-              <div class="col-md-6 col-lg-4 d-flex align-items-end">
+              <div class="col-md-6 col-lg-4 py-2 d-flex align-items-end">
                 <img class="image-circle mr-2 creator-image" :src="bug.creator.picture" :alt="bug.creator.name">
-                <div class="pl-2 text-break">
-                  <h5 class=""><em>Reported By</em></h5>
-                  <h5 class="">{{bug.creator.name}}</h5>
+                <div class="pl-2 text-break align-items-center justify-content-end">
+                  <h5 class="">Reported By</h5>
+                  <p class=""><em>{{bug.creator.name}}</em></p>
                 </div>
               </div>
-              <div class="col-6 col-md-2 d-flex flex-column justify-content-end align-items-start pt-2">
-                <h5 class=""><em>Last Updated</em></h5>
-                <h5><em>{{new Intl.DateTimeFormat('en-US').format(new Date(bug.updatedAt))}}</em></h5>
+              <div class="col-6 col-md-2 d-flex py-2 flex-column lign-items-center justify-content-end pt-2">
+                <h5 class="">Last Updated</h5>
+                <p><em>{{new Intl.DateTimeFormat('en-US').format(new Date(bug.updatedAt))}}</em></p>
               </div>
-              <div v-if="bug.closed" class="col-6 col-md-2 d-flex align-items-end justify-content-end pt-2 .ml-md-auto">
+              <div v-if="bug.closed" class="col-6 col-md-2 d-flex align-items-center justify-content-end pt-2 .ml-md-auto">
                 <h2
                     class="px-2"
                     :title="`${bug.title} is closed`"
@@ -33,24 +43,20 @@
                 🟢</h2>
                 <div class="text-right">
                   <h5 class=""><em>Status</em></h5>
-                  <h5>Closed</h5>
+                  <p><i>Closed</i></p>
                 </div>
               </div>
               <div v-else class="col-6 col-md-2 d-flex align-items-end justify-content-end pt-2 .ml-md-auto">
                 <div class="d-flex" v-if="account.name === bug.creator.name">
-                  <button @click="closeBug" 
-                  class="btn btn-outline-dark"
-                    :title="`Close ${bug.title}`"
-                    :aria-label="`Close ${bug.title}`">Close Bug</button>
-                    <h2 class="px-2">🔴</h2>
+                    <h2 class="px-2 pb-3">🔴</h2>
                   </div>
                 <h2 v-else
-                    class="px-2" 
+                    class="px-2 pb-3" 
                     :title="`${bug.title} is open`"
                     :aria-label="`${bug.title} is open`">🔴</h2>
                 <div class="d-flex flex-column justify-content-end">
                   <h5 class=" "><em>Status</em></h5>
-                  <h5 class="">Open</h5>
+                  <p class="">Open</p>
                 </div>
               </div>
               <div class="col-12 py-4"> 

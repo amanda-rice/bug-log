@@ -1,31 +1,25 @@
 <template>
-  <div class="col-11 bg-light shadow mt-1 pt-2 pb-1 rounded-lg">
+  <div :class="`col-11 bg-light shadow mt-2 pt-2 pb-1 ${bug.closed?'green-border':'red-border'}`">
+    <router-link :to="{name: 'BugPage', params: {bugId: bug.id}}"
+    :title="`Go to ${bug.title} details page`" 
+    :aria-label="`Go to ${bug.title} details page`">
     <div class="row">
-      <div class="col-md-4 py-1">
-        <h5 class="mobile-on"><b>Title:</b></h5>
+      <div class="col-md-4 pb-2 pt-3">
+        <h5 class="mobile-on text-dark text-wrap text-break"><b>Title:</b></h5>
         <div class="d-flex justify-content-center">
-          <div v-if="bug.closed">
-          <p title="Bug is closed">🟢</p>
-        </div>
-        <div v-else>
-          <p title="Bug is open">🔴</p>
-        </div>
-          <router-link :to="{name: 'BugPage', params: {bugId: bug.id}}"
-          :title="`Go to ${bug.title} details page`" 
-          :aria-label="`Go to ${bug.title} details page`">
           <p class="text-dark text-wrap text-break pl-2">{{bug.title}}</p>
-        </router-link>
+        </div>
       </div>
-      </div>
-      <div class="col-md-4 py-1">
+      <div class="col-md-4 pb-2 pt-3 text-dark">
         <h5 class="mobile-on text-break text-wrap"><b>Reported By:</b></h5>
         <p class="text-break text-wrap">{{bug.creator.name}}</p>
       </div>
-      <div class="col-md-4 py-1">
-        <h5 class="mobile-on"><b>Last Updated:</b></h5>
+      <div class="col-md-4 pb-2 pt-3 text-dark">
+        <h5 class="mobile-on text-break text-wrap"><b>Last Updated:</b></h5>
         <p>{{createdDate}}</p>
       </div>
     </div>
+  </router-link>
   </div>
 </template>
 
@@ -67,5 +61,10 @@ export default {
 
 
 <style lang="scss" scoped>
-
+.green-border{
+  border-left: 8px solid green;
+}
+.red-border{
+  border-left: 8px solid red
+}
 </style>

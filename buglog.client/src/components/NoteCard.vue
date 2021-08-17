@@ -7,7 +7,7 @@
         </div>
         <div>
           <i v-if="bug && account.name === note.creator.name && !bug.closed" 
-          class="fa fa-trash fa-lg hoverable pt-2" 
+          class="fa fa-times fa-lg hoverable pt-2" 
           @click="destroy"
           title="Delete Note"
           aria-label="Delete Note"
