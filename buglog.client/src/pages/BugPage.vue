@@ -149,7 +149,7 @@ export default {
       },
       async closeBug(){
         try {
-          if(await Pop.confirm()){
+          if(await Pop.confirm('Are you sure you want to close this bug?', "You won't be able to revert this!", 'warning', 'Yes, close it!')){
           await bugsService.closeBug(state.bugId)
           Pop.toast('Closed Bug Successfully', 'success')
           }

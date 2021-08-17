@@ -48,7 +48,7 @@ export default {
         try {
           if (await Pop.confirm(title = 'Are you sure you want to close this bug?', text = "You won't be able to revert this!", icon = 'warning', confirmButtonText = 'Yes, close it!')) {
             await bugsService.closeBug(props.bug.id)
-            Pop.toast('Deleted Project Successfully', 'success')
+            Pop.toast('Closed Bug Successfully', 'success')
           }
         } catch (error) {
           Pop.toast(error, 'error')
@@ -62,7 +62,7 @@ export default {
 
 <style lang="scss" scoped>
 .green-border{
-  border-left: 8px solid green;
+  border-left: 8px solid #16c60c;
 }
 .red-border{
   border-left: 8px solid red
