@@ -6,7 +6,7 @@
         <div v-if="account && account.id && bug.creator">
           <button @click="closeBug" 
               v-if="account && account.id === bug.creator.id && !bug.closed"
-              class="btn btn-primary mr-2 mobile-off"
+              class="btn btn-primary text-dark mr-2 mobile-off"
               :title="`Close ${bug.title}`"
               :aria-label="`Close ${bug.title}`">Close Bug</button>
           <button class="btn btn-secondary mobile-off" v-if="account && account.id === bug.creator.id && !bug.closed" data-toggle="modal" data-target="#edit-bug" title="Edit This Bug">Edit</button>
@@ -15,7 +15,7 @@
         <div class="col-12 d-flex justify-content-start" v-if="account && account.id && bug.creator">
         <button @click="closeBug" 
               v-if="account && account.id === bug.creator.id && !bug.closed"
-              class="btn btn-primary mr-2 mobile-on"
+              class="btn btn-primary text-dark mr-2 mobile-on"
               :title="`Close ${bug.title}`"
               :aria-label="`Close ${bug.title}`">Close Bug</button>
         <button class="btn btn-secondary mobile-on" v-if="account && account.id === bug.creator.id && !bug.closed" data-toggle="modal" data-target="#edit-bug" title="Edit This Bug">Edit</button>

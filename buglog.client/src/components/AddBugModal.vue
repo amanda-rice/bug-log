@@ -41,7 +41,7 @@
               >
             </div>
             <div>
-              <button v-if="state.createBug" type="submit" class="btn btn-primary mr-3">
+              <button v-if="state.createBug" type="submit" class="btn text-dark btn-primary mr-3">
                 Save
               </button>
               <button type="button" class="btn btn-secondary closeModal" data-dismiss="modal">

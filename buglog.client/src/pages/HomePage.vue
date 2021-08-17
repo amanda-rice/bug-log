@@ -7,7 +7,7 @@
             <h2 class="text-left">Bugs</h2>
           </div>
           <div class="col-6 col-md-2">
-            <button class="btn btn-primary" 
+            <button class="btn btn-primary text-dark" 
             @click="filterOpen"
             :title="`Filter to ${state.isOpen?'View All':'View Open Bugs'}`" 
             :aria-label="`Filter to ${state.isOpen?'View All':'View Open Bugs'}`">
