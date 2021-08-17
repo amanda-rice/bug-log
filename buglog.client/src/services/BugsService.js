@@ -1,5 +1,4 @@
 import { AppState } from '../AppState'
-import { logger } from '../utils/Logger'
 import { api } from './AxiosService'
 
 class BugsService {
@@ -8,15 +7,9 @@ class BugsService {
     AppState.bugs = res.data
   }
 
-  async getOpen(query) {
-    const res = await api.get('api/bugs', { query })
-    AppState.OpenBugs = res.data
-  }
-
   async getBugById(id) {
     const res = await api.get(`api/bugs/${id}`)
     AppState.thisBug = res.data
-    console.log(AppState.thisBug, 'this bug')
   }
 
   async createBug(obj) {
@@ -31,7 +24,6 @@ class BugsService {
     AppState.bugs.splice(index, 1)
     AppState.bugs.push(res.data)
     AppState.thisBug = res.data
-    logger.log(AppState.bugs[AppState.bugs.length - 1])
     return res.data.id
   }
 

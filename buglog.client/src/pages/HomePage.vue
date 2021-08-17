@@ -56,7 +56,6 @@ export default {
     onMounted(async() => {
       try {
         await bugsService.getAll()
-        await bugsService.getOpen()
       } catch (error) {
         Pop.toast(error, 'error')
       }
