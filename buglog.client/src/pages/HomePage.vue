@@ -1,5 +1,5 @@
 <template>
-  <div class="home container-fluid flex-grow-1 d-flex flex-column">
+  <div class="home container-fluid bg-dark flex-grow-1 d-flex flex-column">
     <div class="row">
       <div class="my-2 col-12 py-3 px-4">
         <div class="row justify-content-between">
@@ -7,7 +7,7 @@
             <h2 class="text-left">Bugs</h2>
           </div>
           <div class="col-6 col-md-2">
-            <button class="btn btn-outline-dark" 
+            <button class="btn btn-primary" 
             @click="filterOpen"
             :title="`Filter to ${state.isOpen?'View All':'View Open Bugs'}`" 
             :aria-label="`Filter to ${state.isOpen?'View All':'View Open Bugs'}`">
@@ -15,7 +15,7 @@
           </button>
         </div>
         <div class="col-6 col-md-2">
-          <button v-if="account.name" class="btn btn-outline-dark" data-toggle="modal" data-target="#create-bug" title="Create New Bug">Add Bug</button>
+          <button v-if="account.name" class="btn btn-secondary" data-toggle="modal" data-target="#create-bug" title="Create New Bug">Add Bug</button>
         </div>
       </div>
       </div>

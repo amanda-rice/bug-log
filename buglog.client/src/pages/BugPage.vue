@@ -1,24 +1,24 @@
 <template>
-  <div class="home container-fluid flex-grow-1 d-flex flex-column" v-if="bug">
+  <div class="home container-fluid flex-grow-1 bg-dark d-flex flex-column" v-if="bug">
     <div class="row">
       <div class="col-12 pt-2 d-flex justify-content-between">
         <h1 class="text-left text-break">{{bug.title}}</h1>
         <div v-if="account && account.id && bug.creator">
           <button @click="closeBug" 
               v-if="account && account.id === bug.creator.id && !bug.closed"
-              class="btn btn-outline-dark mr-2 mobile-off"
+              class="btn btn-primary mr-2 mobile-off"
               :title="`Close ${bug.title}`"
               :aria-label="`Close ${bug.title}`">Close Bug</button>
-          <button class="btn btn-outline-dark mobile-off" v-if="account && account.id === bug.creator.id && !bug.closed" data-toggle="modal" data-target="#edit-bug" title="Edit This Bug">Edit</button>
+          <button class="btn btn-secondary mobile-off" v-if="account && account.id === bug.creator.id && !bug.closed" data-toggle="modal" data-target="#edit-bug" title="Edit This Bug">Edit</button>
         </div>
         </div>
         <div class="col-12 d-flex justify-content-start" v-if="account && account.id && bug.creator">
         <button @click="closeBug" 
               v-if="account && account.id === bug.creator.id && !bug.closed"
-              class="btn btn-outline-dark mr-2 mobile-on"
+              class="btn btn-primary mr-2 mobile-on"
               :title="`Close ${bug.title}`"
               :aria-label="`Close ${bug.title}`">Close Bug</button>
-        <button class="btn btn-outline-dark mobile-on" v-if="account && account.id === bug.creator.id && !bug.closed" data-toggle="modal" data-target="#edit-bug" title="Edit This Bug">Edit</button>
+        <button class="btn btn-secondary mobile-on" v-if="account && account.id === bug.creator.id && !bug.closed" data-toggle="modal" data-target="#edit-bug" title="Edit This Bug">Edit</button>
       </div>
       <div class="col-12" >
         <div class="row" >
@@ -81,7 +81,7 @@
                   <button v-if="state.createNote.body" 
                         type="submit" 
                         id="create-note-button"
-                        class="btn btn-outline-dark mr-3"
+                        class="btn btn-success mr-3"
                         title="Submit note"
                         aria-label="Submit note">
                     Save Note

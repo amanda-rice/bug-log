@@ -62,9 +62,11 @@ export default {
 
 <style lang="scss" scoped>
 .green-border{
-  border-left: 8px solid #16c60c;
+  border-left: 8px solid #558B6E;
+  border-bottom: 3px solid #558B6E;
 }
 .red-border{
-  border-left: 8px solid red
+  border-left: 8px solid #CD8B76;
+  border-bottom: 3px solid #CD8B76;
 }
 </style>
